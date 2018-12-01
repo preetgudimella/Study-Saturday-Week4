@@ -48,7 +48,9 @@ export default class Main extends Component {
                 {
                     this.state.selectedStudent.id ? <SingleStudent student={this.state.selectedStudent} /> : null
                 }
-               
+                <button>
+                    
+                </button>
             </div>
         )
     }
