@@ -1,0 +1,39 @@
+
+Main.js (1)
+    1) Created button in render()
+        - <button onClick={}>Add New Student</button>
+    2) Added toggleForm: false to this.state
+        - To hide form by default
+    3) Created handleClick()
+    4) Bound handleClick() w/in constructor method
+    5) Added handleClick method to onClick on <button></button>
+        - <button onClick={this.handleClick}>Add New Student</button>
+
+
+NewStudentForm.js (final)
+    6) Created NewStudentForm component
+    7) set up the form w/in <form></form>
+        - https://reactjs.org/docs/forms.html
+    8) Created labels
+        - Added an input field for each label (allow single-line text to be inputted)
+    9) Created a submit button
+    10) Created handleChange(event)
+    11) Bound handleChange w/in constructor method
+    12) Added onChange for each input
+    13) Created handleSubmit(event)
+    14) Bound handleSubmit w/in constructor method
+    15) Added value for each input
+
+
+Main.js (2)
+    16) Created addStudent()
+    17) Bound addStudent to constructor method
+
+
+NewStudentForm.js
+    18) Added this.props.addStudent(this.state);
+
+
+Main.js (final)
+    19) Added addStudent prop to <NewStudentForm /> in render()
+        - {this.state.toggleForm ? <NewStudentForm addStudent={this.addStudent} /> : null};

@@ -1,22 +1,5 @@
-/*
 
-6) set up the form w/in <form></form>
-    - https://reactjs.org/docs/forms.html
-7) Created labels
-    - Added an input field for each label (allow single-line text to be inputted)
-8) Created a submit button
-9) Created handleChange(event)
-10) Bound handleChange w/in constructor method
-11) Added onChange for each input
-12) Created handleSubmit(event)
-13) Bound handleSubmit w/in constructor method
-14) Added value for each input
-
-17) Added this.props.addStudent(this.state);
-
-*/
-
-
+// final
 
 import React, { Component } from 'react';
 
@@ -95,8 +78,8 @@ class NewStudentForm extends Component {
 
         <label>
           Year:
-          <select>
-            <option default value="Select a Year">Select a Year</option>
+          <select>                                                                                        {/*  Creates a drop down list  */}
+            <option default value="Select a Year">Select a Year</option>                                  {/*  This option is initially selected  */}                                                                                                     {/*  ??? option selected  */}
             <option value="Freshman">Freshman</option>
             <option value="Sophomore">Sophomore</option>
             <option value="Junior">Junior</option>
