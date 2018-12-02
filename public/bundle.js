@@ -10157,7 +10157,15 @@ var _Main2 = _interopRequireDefault(_Main);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_reactDom2.default.render(_react2.default.createElement(_Main2.default, null), document.getElementById('app'));
+_reactDom2.default.render(_react2.default.createElement(_Main2.default, null), // Rendering the Main component in Main.js
+document.getElementById('app') // ??? app?
+);
+
+// 1
+
+// console.log("Hello Webpack!")
+
+// final
 
 /***/ }),
 /* 341 */
@@ -33272,23 +33280,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /*
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               1) Created button in render()
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   - <button onClick={}>Add New Student</button>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               2) Added toggleForm: false to this.state
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               3) Created handleClick()
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               4) Added handleClick method to onClick on <button></button>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   - <button onClick={this.handleClick}>Add New Student</button>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               5) Created NewStudentForm component
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               15) Created addStudent()
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               16) Bound addStudent to constructor method
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               18) Added addStudent prop to <NewStudentForm /> in render()
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   - {this.state.toggleForm ? <NewStudentForm addStudent={this.addStudent} /> : null};
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+// final
 
 var Main = function (_Component) {
   _inherits(Main, _Component);
@@ -33312,7 +33305,8 @@ var Main = function (_Component) {
   _createClass(Main, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      this.getStudents(); // ??? why not add addStudent here also?
+      // Ensuring that you get the intended info before rendering
+      this.getStudents();
     }
   }, {
     key: 'getStudents',
@@ -33324,7 +33318,13 @@ var Main = function (_Component) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                console.log('fetching all students');
+                // ??? Don't need to bind an axios request function? correct?
+                // 1)  router.get('/', function(req, res, next) {
+                //     Student.findAll().then(students => res.json(students));                               // Getting all the students
+                //   });
+                // 2) app.use('/student', Student)
+                // 3) Axios.get('/student')
+                console.log('Fetching all students');
                 _context.prev = 1;
                 _context.next = 4;
                 return _axios2.default.get('/student');
@@ -33332,24 +33332,23 @@ var Main = function (_Component) {
               case 4:
                 _ref2 = _context.sent;
                 data = _ref2.data;
-
+                // Fetching data
                 this.setState({ students: data });
-                console.log('This is State 1', this.state);
-                _context.next = 13;
+                _context.next = 12;
                 break;
 
-              case 10:
-                _context.prev = 10;
+              case 9:
+                _context.prev = 9;
                 _context.t0 = _context['catch'](1);
 
                 console.error(_context.t0);
 
-              case 13:
+              case 12:
               case 'end':
                 return _context.stop();
             }
           }
-        }, _callee, this, [[1, 10]]);
+        }, _callee, this, [[1, 9]]);
       }));
 
       function getStudents() {
@@ -33375,7 +33374,7 @@ var Main = function (_Component) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                console.log('fetching a student to add');
+                console.log('Fetching a student to add');
                 _context2.next = 3;
                 return _axios2.default.post('/student', student);
 
@@ -33410,10 +33409,13 @@ var Main = function (_Component) {
         toggleForm: !this.state.toggleForm // Form is visible upon clicking the button
       });
     }
+
+    // Removed the <tbody> and </tbody> tags since they are already in StudentList.js
+
   }, {
     key: 'render',
     value: function render() {
-      console.log('this is the state in main', this.state);
+      console.log('This is the state in Main', this.state);
       return _react2.default.createElement(
         'div',
         null,
@@ -33461,6 +33463,195 @@ var Main = function (_Component) {
 }(_react.Component);
 
 exports.default = Main;
+
+// 2
+
+// import React, { Component } from 'react';
+// import axios from 'axios';
+
+// import StudentList from './StudentList'
+// import SingleStudent from './SingleStudent';
+
+
+// class Main extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//         students: [],
+//         selectedStudent: {},
+//         toggleForm: false,                                                                  // Form is hidden by default
+//       };
+//     this.selectStudent = this.selectStudent.bind(this)
+//     this.handleClick = this.handleClick.bind(this);
+//     this.addStudent = this.addStudent.bind(this);
+//   }
+
+
+//   componentDidMount() {                                                                     // Ensuring that you get the intended info before rendering
+//     this.getStudents();
+//   }
+
+
+//   async getStudents() {                                                                     // ??? Don't need to bind an axios request function? correct?
+//                                                                                             // 1)  router.get('/', function(req, res, next) {
+//                                                                                             //     Student.findAll().then(students => res.json(students));                               // Getting all the students
+//                                                                                             //   });
+//                                                                                             // 2) app.use('/student', Student)
+//                                                                                             // 3) Axios.get('/student')
+//     console.log('Fetching all students')
+//     try {
+//       const { data } = await axios.get('/student');                                         // Fetching data
+//       this.setState({ students: data });
+//     } catch (err) {
+//       console.error(err);
+//     }
+//   }
+
+
+//   selectStudent(student) {
+//     return this.setState({
+//       selectedStudent: student
+//     })
+//   }
+
+
+//   async addStudent(student) {
+//     console.log('Fetching a student to add')
+//       const { data } = await axios.post('/student', student)                                // router.post('/', function(req, res, next) {
+//       this.setState({
+//         students: [...this.state.students, data],
+//         toggleForm: false,
+//       })
+//       console.log('This is State 2', this.state);
+//     }
+
+
+//   handleClick(event) {
+//     return this.setState({
+//         toggleForm: !this.state.toggleForm                                                  // Form is visible upon clicking the button
+//     });
+//   }
+
+
+// // Removed the <tbody> and </tbody> tags since they are already in StudentList.js
+//   render() {
+//     console.log('this is the state in Main', this.state);
+//     return (
+
+//       <div>                                                                                 {/*  JSX requires that we have a wrapper component ??? tag?  */}
+//         <h1>Students</h1>
+//         <button onClick={this.handleClick}>Add New Student</button>                         {/*  Initial: <button onClick={}>Add New Student</button>  */}
+
+//         <table>
+
+//           <thead>
+//             <tr>
+//               <th>Name</th>
+//               <th>Tests</th>
+//             </tr>
+//           </thead>
+
+//           <StudentList students={this.state.students} selectStudent={this.selectStudent} />          
+
+//         </table>
+
+//         {this.state.selectedStudent.id ? (<SingleStudent student={this.state.selectedStudent} />) : null}
+
+//       </div>
+//     );
+//   }
+// }
+
+// export default Main;
+
+
+// 1
+
+// import React, { Component } from 'react';
+// import axios from 'axios';
+
+// import StudentList from './StudentList'
+// import SingleStudent from './SingleStudent';
+
+
+// class Main extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//         students: [],
+//         selectedStudent: {},
+//         toggleForm: false,                                                                  // Form is hidden by default
+//       };
+//     this.selectStudent = this.selectStudent.bind(this)
+//     this.handleClick = this.handleClick.bind(this);
+//   }
+
+
+//   componentDidMount() {                                                                     // Ensuring that you get the intended info before rendering
+//     this.getStudents();
+//   }
+
+
+//   async getStudents() {                                                                     // ??? Don't need to bind an axios request function? correct?
+// 1)  router.get('/', function(req, res, next) {
+//       Student.findAll().then(students => res.json(students));                               // Getting all the students
+//     });
+// 2) app.use('/student', Student)
+// 3) Axios.get('/student')
+//     console.log('Fetching all students')
+//     try {
+//       const { data } = await axios.get('/student');                                         // Fetching data
+//       this.setState({ students: data });
+//     } catch (err) {
+//       console.error(err);
+//     }
+//   }
+
+
+//   selectStudent(student) {
+//     return this.setState({
+//       selectedStudent: student
+//     })
+//   }
+
+
+//   handleClick(event) {
+//     return this.setState({
+//         toggleForm: !this.state.toggleForm                                                  // Form is visible upon clicking the button
+//     });
+//   }
+
+
+// // Removed the <tbody> and </tbody> tags since they are already in StudentList.js
+//   render() {
+//     console.log('this is the state in Main', this.state);
+//     return (
+
+//       <div>                                                                                 {/*  JSX requires that we have a wrapper component ??? tag?  */}
+//         <h1>Students</h1>
+//         <button onClick={this.handleClick}>Add New Student</button>                         {/*  Initial: <button onClick={}>Add New Student</button>  */}
+
+//         <table>
+
+//           <thead>
+//             <tr>
+//               <th>Name</th>
+//               <th>Tests</th>
+//             </tr>
+//           </thead>
+
+//           <StudentList students={this.state.students} selectStudent={this.selectStudent} />          
+
+//         </table>
+
+//         {this.state.selectedStudent.id ? (<SingleStudent student={this.state.selectedStudent} />) : null}
+
+//       </div>
+//     );
+//   }
+// }
+
+// export default Main;
 
 /***/ }),
 /* 353 */
@@ -34370,11 +34561,12 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var StudentList = function StudentList(props) {
-  console.log('p', props);
+  console.log('Here are props in StudentList', props);
   return _react2.default.createElement(
     'tbody',
     null,
     props.students.map(function (student) {
+      {/*  Since getStudents has obtained all the student data from the back-end, Mapping t*/}
       return _react2.default.createElement(
         'tr',
         { key: student.id },
@@ -34388,7 +34580,7 @@ var StudentList = function StudentList(props) {
           { onClick: function onClick() {
               return props.selectStudent(student);
             } },
-          'Details'
+          'Click For Details'
         )
       );
     })
@@ -34423,7 +34615,8 @@ var avgGrade = function avgGrade(tests) {
 };
 
 var SingleStudent = function SingleStudent(props) {
-  console.log('ppp', props);
+  console.log('Here are props in SingleStudent', props);
+
   return _react2.default.createElement(
     'div',
     null,
@@ -34516,23 +34709,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /*
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               6) set up the form w/in <form></form>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   - https://reactjs.org/docs/forms.html
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               7) Created labels
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   - Added an input field for each label (allow single-line text to be inputted)
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               8) Created a submit button
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               9) Created handleChange(event)
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               10) Bound handleChange w/in constructor method
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               11) Added onChange for each input
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               12) Created handleSubmit(event)
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               13) Bound handleSubmit w/in constructor method
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               14) Added value for each input
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               17) Added this.props.addStudent(this.state);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+// final
 
 var NewStudentForm = function (_Component) {
   _inherits(NewStudentForm, _Component);
@@ -34623,11 +34801,14 @@ var NewStudentForm = function (_Component) {
           _react2.default.createElement(
             'select',
             null,
+            '                                                                                        ',
             _react2.default.createElement(
               'option',
               { 'default': true, value: 'Select a Year' },
               'Select a Year'
             ),
+            '                                  ',
+            '                                                                                                     ',
             _react2.default.createElement(
               'option',
               { value: 'Freshman' },

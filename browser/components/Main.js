@@ -57,7 +57,7 @@ class Main extends Component {
 
 
   async addStudent(student) {
-    console.log('fetching a student to add')
+    console.log('Fetching a student to add')
       const { data } = await axios.post('/student', student)                                // router.post('/', function(req, res, next) {
       this.setState({
         students: [...this.state.students, data],
@@ -78,7 +78,7 @@ class Main extends Component {
 
 // Removed the <tbody> and </tbody> tags since they are already in StudentList.js
   render() {
-    console.log('This is the state in main', this.state);
+    console.log('This is the state in Main', this.state);
     return (
 
       <div>
@@ -178,7 +178,7 @@ export default Main;
 
 
 //   async addStudent(student) {
-//     console.log('fetching a student to add')
+//     console.log('Fetching a student to add')
 //       const { data } = await axios.post('/student', student)                                // router.post('/', function(req, res, next) {
 //       this.setState({
 //         students: [...this.state.students, data],
@@ -199,7 +199,7 @@ export default Main;
 
 // // Removed the <tbody> and </tbody> tags since they are already in StudentList.js
 //   render() {
-//     console.log('this is the state in main', this.state);
+//     console.log('this is the state in Main', this.state);
 //     return (
 
 //       <div>                                                                                 {/*  JSX requires that we have a wrapper component ??? tag?  */}
@@ -302,7 +302,7 @@ export default Main;
 
 // // Removed the <tbody> and </tbody> tags since they are already in StudentList.js
 //   render() {
-//     console.log('this is the state in main', this.state);
+//     console.log('this is the state in Main', this.state);
 //     return (
 
 //       <div>                                                                                 {/*  JSX requires that we have a wrapper component ??? tag?  */}

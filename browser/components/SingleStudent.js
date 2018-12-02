@@ -15,7 +15,7 @@ const avgGrade = tests => {
 
 
 const SingleStudent = props => {
-  console.log('here are props in SingleStudent', props);
+  console.log('Here are props in SingleStudent', props);
 
   return (
     <div>
