@@ -8,11 +8,12 @@ const StudentList = props => {
   return (
 
     <tbody>
-      {props.students.map(student => {                                      {/*  Since getStudents has obtained all the student data from the back-end, Mapping t*/}
+      {props.students.map(student => {                                             {/*  Since getStudents has obtained all the student data from the back-end, mapping the students array  */}
         return (
           <tr key={student.id}>
             <td>{student.fullName}</td>
-            <td onClick= {() => props.selectStudent(student)}>Click For Details</td>
+            <td onClick= {() => props.selectStudent(student)}>Details</td>
+            <td>Click on Details</td>
           </tr>
         );
       })}
